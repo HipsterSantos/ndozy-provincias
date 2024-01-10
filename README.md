@@ -4,12 +4,22 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
-## Step 1: Instalar depencias e pods ios ,em seguida tart the Metro Server
+## Step 1: Instalar depencias e pods do ios 
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+First, you will need to  **npm install**, 
 
-To start Metro, run the following command from the _root_ of your React Native project:
+**Nesse mesmo passo **
 
+# acessar ios folder 
+**cd ios** 
+**pod install**
+**cd ..**
+
+## Fazer a build do project 
+```Nesse mesmo passo vc deve executar o seguinte comnando```
+**npx react-native run-ios**
+Espere pelo build ser concluido .
+**OBS**  o build a ser concluido é o primeiro antes do metro , so apos o primeiro build poderar rodar no **metro** tranquilamente , em case vc tiver rodado o **metro** primeiro
 ```bash
 # npm i
 
@@ -18,7 +28,8 @@ To start Metro, run the following command from the _root_ of your React Native p
 # pod install
 
 # cd ..
-# using npx to build application 
+
+#using npx to build application 
 npx react-native run-ios
 
 #
