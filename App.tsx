@@ -13,6 +13,7 @@ import {Button, Text} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import WelcomeScreen from './Screens/WelcomeScreen';
 import HomeScreen from './Screens/HomeScreen';
+import DetailsScreen from './Screens/DetailsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,15 +26,19 @@ function App(): React.JSX.Element {
           component={WelcomeScreen}
           options={{headerTitle: ''}}
         />
-        <Stack.Screen name="Main" component={HomeScreen} />
-        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen
+          name="Main"
+          component={HomeScreen}
+          options={{headerTitle: ''}}
+        />
+        <Stack.Screen
+          name="Details"
+          component={DetailsScreen}
+          options={{headerTitle: ''}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-const DetailsScreen = ({navigation, route}) => {
-  return <Text>This is {route.params.name}'s details</Text>;
-};
 
 export default App;

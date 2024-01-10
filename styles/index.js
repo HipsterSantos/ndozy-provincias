@@ -72,8 +72,9 @@ export default () =>
         height: '25%',
         // backgroundColor: 'blue'
       },
-      dataList: {
-        flex: 4,
+      dataListContainer: {
+        flex: 5,
+        paddingTop: 10,
       },
       backgroundImageStyle: {
         borderEndEndRadius: 80,
@@ -89,12 +90,50 @@ export default () =>
       tinyText: {
         fontSize: 20,
         color: 'white',
-        textAlign: 'left'
+        textAlign: 'left',
       },
       mediumText: {
         fontSize: 30,
-        color: '#fff'
+        color: '#fff',
       },
     },
-    DetailsScreen: {},
+    DetailsScreen: {
+      mainContainer: {
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'white',
+      },
+      backgroundContainer: {
+        width: '100%',
+        height: '25%',
+        // backgroundColor: 'blue'
+      },
+      overlay: {
+        flex: 1,
+        width: '100%',
+        borderEndEndRadius: 80,
+        backgroundColor: '#DC1130',
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      line: {},
+      scrollContainer: {
+        marginTop: 5,
+        width: '100%',
+        padding: 20
+      },
+      largeText: {
+        fontSize: 20,
+        width: '100%',
+      },
+      tinyText: {
+        fontSize: 20,
+        color: 'white',
+        textAlign: 'left',
+      },
+      mediumText: {
+        fontSize: 30,
+        color: '#fff',
+      },
+    },
   });

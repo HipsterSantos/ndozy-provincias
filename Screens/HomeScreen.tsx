@@ -5,15 +5,57 @@ import {
   FlatList,
   ActivityIndicator,
   ImageBackground,
+  TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import bgImage from '../assets/img/2.jpg';
 import loadStyles from '../styles';
 
 const styles = loadStyles().HomeScreen;
 
+type ItemData = {
+  id: string;
+  nome: string;
+};
+
+type ItemProps = {
+  item: ItemData;
+  onPress: () => void;
+  backgroundColor: string;
+  color: string;
+};
+
+const Item = ({item, onPress, backgroundColor, color}: ItemProps) => (
+  <TouchableOpacity
+    onPress={onPress}
+    style={[{backgroundColor}, {padding: 10, borderRadius: 15, marginTop: 10}]}>
+    <Text style={{color, textAlign: 'left', textTransform: 'uppercase'}}>
+      {item.nome}
+    </Text>
+  </TouchableOpacity>
+);
+
+const RenderItem = ({
+  item,
+  index,
+}: {
+  item: ItemData;
+  index: number;
+}): React.JSX.Element => {
+  return (
+    <Item
+      item={item}
+      onPress={item.onPress}
+      backgroundColor={index % 2 === 0 ? '#DC1130' : '#000'}
+      color="#fff"
+    />
+  );
+};
+
 const HomeScreen = ({navigation, route}) => {
   const [provinces, setProvinces] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedId, setSelectedId] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +65,7 @@ const HomeScreen = ({navigation, route}) => {
         );
         const data = await response.json();
         setProvinces(data);
-        console.log('data--', data)
+        console.log('data--', data);
       } catch (error) {
         console.error('Error while fetching data:', error);
       } finally {
@@ -46,7 +88,7 @@ const HomeScreen = ({navigation, route}) => {
     <View style={styles.mainContainer}>
       <View style={styles.backgroundContainer}>
         <ImageBackground
-          style={[styles.backgroundContainer,{height: '100%'}]}
+          style={[styles.backgroundContainer, {height: '100%'}]}
           source={bgImage}
           imageStyle={styles.backgroundImageStyle}>
           <View style={styles.overlay}>
@@ -55,12 +97,25 @@ const HomeScreen = ({navigation, route}) => {
           </View>
         </ImageBackground>
       </View>
-      <View style={styles.dataList}>
-        <FlatList
-          data={provinces}
-          keyExtractor={item => item.id.toString()}
-          renderItem={({item}) => <Text>{item.nome}</Text>}
-        />
+      <View style={styles.dataListContainer}>
+        <ScrollView>
+          {provinces.map((item, index) => (
+            <RenderItem
+              item={{
+                onPress: () => {
+                  navigation.navigate('Details', {
+                    item,
+                    index,
+                    states: item.municipios,
+                  });
+                },
+                id: item?.id,
+                nome: item?.nome,
+              }}
+              index={index}
+            />
+          ))}
+        </ScrollView>
       </View>
     </View>
   );
