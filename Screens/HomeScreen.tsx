@@ -2,60 +2,20 @@ import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
-  FlatList,
   ActivityIndicator,
   ImageBackground,
-  TouchableOpacity,
   ScrollView,
 } from 'react-native';
 import bgImage from '../assets/img/2.jpg';
 import loadStyles from '../styles';
+import { RenderItem } from '../Components/renderedItem';
 
 const styles = loadStyles().HomeScreen;
-
-type ItemData = {
-  id: string;
-  nome: string;
-};
-
-type ItemProps = {
-  item: ItemData;
-  onPress: () => void;
-  backgroundColor: string;
-  color: string;
-};
-
-const Item = ({item, onPress, backgroundColor, color}: ItemProps) => (
-  <TouchableOpacity
-    onPress={onPress}
-    style={[{backgroundColor}, {padding: 10, borderRadius: 15, marginTop: 10}]}>
-    <Text style={{color, textAlign: 'left', textTransform: 'uppercase'}}>
-      {item.nome}
-    </Text>
-  </TouchableOpacity>
-);
-
-const RenderItem = ({
-  item,
-  index,
-}: {
-  item: ItemData;
-  index: number;
-}): React.JSX.Element => {
-  return (
-    <Item
-      item={item}
-      onPress={item.onPress}
-      backgroundColor={index % 2 === 0 ? '#DC1130' : '#000'}
-      color="#fff"
-    />
-  );
-};
 
 const HomeScreen = ({navigation, route}) => {
   const [provinces, setProvinces] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedId, setSelectedId] = useState(null);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,9 +25,8 @@ const HomeScreen = ({navigation, route}) => {
         );
         const data = await response.json();
         setProvinces(data);
-        console.log('data--', data);
       } catch (error) {
-        console.error('Error while fetching data:', error);
+        // console.error('Error while fetching data:', error);
       } finally {
         setLoading(false);
       }
@@ -98,9 +57,10 @@ const HomeScreen = ({navigation, route}) => {
         </ImageBackground>
       </View>
       <View style={styles.dataListContainer}>
-        <ScrollView>
+        <ScrollView style={styles.scrollView}>
           {provinces.map((item, index) => (
             <RenderItem
+            styles={styles}
               item={{
                 onPress: () => {
                   navigation.navigate('Details', {

@@ -6,6 +6,7 @@ export default () =>
       mainContainer: {
         width: '100%',
         height: '100%',
+        backgroundColor: '#fff',
       },
       backgroundContainer: {
         height: '90%',
@@ -44,7 +45,7 @@ export default () =>
         alignSelf: 'center',
         color: 'white',
         backgroundColor: '#E11131',
-        borderRadius: 10,
+        borderRadius: 25,
       },
       buttonText: {
         color: 'white',
@@ -63,7 +64,7 @@ export default () =>
       mainContainer: {
         width: '100%',
         height: '100%',
-        backgroundColor: 'white',
+        backgroundColor: '#fff',
         justifyContent: 'center',
         alignItems: 'center',
       },
@@ -86,14 +87,28 @@ export default () =>
         backgroundColor: 'rgba(255, 0, 0, 0.5)', // Red overlay with alpha
         justifyContent: 'center',
         alignItems: 'center',
+        paddingTop: 50,
+      },
+      scrollView: {
+        width: '100%',
+      },
+      touchableOpacity: {
+        width: 300,
+        padding: 30,
+        borderRadius: 15,
+        marginTop: 20,
       },
       tinyText: {
         fontSize: 20,
+        paddingLeft: 20,
         color: 'white',
         textAlign: 'left',
+        alignSelf: 'left',
       },
       mediumText: {
+        paddingLeft: 20,
         fontSize: 30,
+        alignSelf: 'left',
         color: '#fff',
       },
     },
@@ -115,12 +130,16 @@ export default () =>
         backgroundColor: '#DC1130',
         justifyContent: 'center',
         alignItems: 'center',
+        padding: 20
       },
       line: {},
+      scrollView: {
+        padding: 5,
+      },
       scrollContainer: {
         marginTop: 5,
         width: '100%',
-        padding: 20
+        padding: 20,
       },
       largeText: {
         fontSize: 20,
@@ -129,9 +148,10 @@ export default () =>
       tinyText: {
         fontSize: 20,
         color: 'white',
-        textAlign: 'left',
+        alignSelf: 'left',
       },
       mediumText: {
+        alignSelf: 'left',
         fontSize: 30,
         color: '#fff',
       },
