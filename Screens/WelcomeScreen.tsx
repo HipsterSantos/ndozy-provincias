@@ -38,7 +38,7 @@ export default function WelcomeScreen({navigation}): React.JSX.Element {
         </View>
         <View style={styles.btnContainer}>
           <TouchableOpacity style={styles.touchable} onPress={handleOnPress}>
-            <Text style={styles.buttonText}>Press Me</Text>
+            <Text style={styles.buttonText}>Entrar</Text>
           </TouchableOpacity>
         </View>
       </View>
